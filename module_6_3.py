@@ -48,19 +48,16 @@ class Duckbill( AquaticAnimal, Bird, PoisonousAnimal):
     def speak(self):
         print(self.sound)
 
-
 db = Duckbill(10)
-
 print(db.live)
 print(db.beak)
-
 db.speak()
 db.attack()
-
 db.move(1, 2, 3)
 db.get_coords()
 db.dive_in(6)
 db.get_coords()
+db.lay_eggs()
 
 db.lay_eggs()
 db.dive_in(6)
