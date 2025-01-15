@@ -32,7 +32,7 @@ class Shop():
             else:
                 add_product = (p1 + p3)
                 _file = open(self.__file_name, 'a')
-                _file.write(f'{add_product}\n')
+                _file.write(f'{add_product}\n{p2}\n')
                 _file.close()
                 print (f'Продукт {product.name} уже был в магазине, его общий вес теперь равен {(add_product.weight)}.')
 
