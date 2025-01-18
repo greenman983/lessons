@@ -1,7 +1,7 @@
 class Figure:
-    sides_1 = []
-    color_1 = []
-    filled = False
+    _sides = []
+    _colors = []
+    _filled = False
 
     def __init__(self, rgb, *side):
         self.side = side[0]
@@ -9,9 +9,9 @@ class Figure:
         self.filled = True
 
     def get_color(self):
-        self.color_1 = self.color
-        self.filled = True
-        return self.color_1
+        self._colors = self.color
+        self._filled = True
+        return self._colors
 
     def is_valid_color(self, r, g, b):
         self.r, self.g, self.b = r, g, b
@@ -25,8 +25,8 @@ class Figure:
             self.color = [self.r, self.g, self.b]
 
     def __is_valid_sides(self, *args):
-        for side in self.sides:
-            if len(self.sides) == self.sides_count and side > 0 and type(side) == int:
+        for side in self._sides:
+            if len(self._sides) == self.sides_count and side > 0 and type(side) == int:
                 return True
             else:
                 return False
@@ -84,68 +84,6 @@ class Cube(Figure):
         for element in range(self.sides_count):
             set_side_cube.append(self.side)
         self.sides_1 = set_side_cube
-        return self.sides_1
-
-    def get_volume(self):
-        return self.side ** 3
-
-
-circle1 = Circle((200, 200, 100), 10)  # (Цвет, стороны)
-cube1 = Cube((222, 35, 130), 6)
-
-# Проверка на изменение цветов:
-circle1.set_color(55, 66, 77)  # Изменится
-print(circle1.get_color())
-cube1.set_color(300, 70, 15)  # Не изменится
-print(cube1.get_color())
-
-# Проверка на изменение сторон:
-cube1.set_sides(5, 3, 12, 4, 5)  # Не изменится
-print(cube1.get_sides())
-circle1.set_sides(15)  # Изменится
-print(circle1.get_sides())
-
-# Проверка периметра (круга), это и есть длина:
-print(len(circle1))
-
-# Проверка объёма (куба):
-print(cube1.get_volume())
-
-
-
-class Circle(Figure):
-    sides_count = 1
-    radius = None
-
-    def set_radius(self):
-        self.radius = self.__len__() / (2 * 3.141569)
-        return self.radius
-
-    def get_square(self):
-        self.set_radius()
-        return (self.radius ** 2) * 3.141569
-
-
-class Triangle(Figure):
-    sides_count = 3
-    height = None
-
-    def get_square(self):
-        return (self.side ** 2) * (3 ** 0.5) / 4
-
-    def set_height(self):
-        self.height = self.side * (3 ** 0.5) / 2
-        return self.height
-
-
-class Cube(Figure):
-    sides_count = 12
-
-    def set_side_lst(self):
-        set_side_lst = []
-        for element in range(self.sides_count):
-            set_side_lst.append(self.side)
-        self.sides_1 = set_side_lst
         return self.sides_1
 
     def get_volume(self):
